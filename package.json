@@ -3,10 +3,22 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "format:test": "prettier --list-different \"./projects/**/*.{ts,html,scss,json}\"",
+    "format:write": "prettier --write \"./projects/**/*.{ts,html,scss,json}\"",
+    "analyze": "ng build --stats-json --output-hashing=none --named-chunks && esbuild-visualizer --template treemap --metadata dist/event-me/stats.json --filename dist/event-me/analyse/index.html  && http-server -o -c-1 ./dist/event-me/analyse/",
+    "analyze:sme": "ng build --source-map --output-hashing=none --named-chunks && source-map-explorer dist/event-me/browser/*.js --html dist/event-me/sme/index.html && http-server -o -c-1 ./dist/event-me/sme/",
+    "analyze:deps": "npm-run-all analyze:deps:*",
+    "analyze:deps:all": "madge projects/event-me/src/main.ts --ts-config tsconfig.json --image ./deps/event-me/_all.png",
+    "analyze:deps:ui": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/event-me/ui.png projects/event-me/src/app/ui/",
+    "analyze:deps:pattern": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/event-me/pattern.png projects/event-me/src/app/pattern/",
+    "analyze:deps:feature": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/event-me/feature.png projects/event-me/src/app/feature/",
+    "analyze:deps:layout": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/event-me/layout.png projects/event-me/src/app/layout/",
+    "analyze:deps:core": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/event-me/core.png projects/event-me/src/app/core/",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -23,15 +35,25 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^19.0.6",
     "@angular/cli": "^19.0.6",
     "@angular/compiler-cli": "^19.0.0",
     "@types/jasmine": "~5.1.0",
+    "angular-eslint": "19.0.2",
+    "esbuild-visualizer": "^0.7.0",
+    "eslint": "^9.16.0",
+    "http-server": "^14.1.1",
     "jasmine-core": "~5.4.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.6.2"
+    "madge": "^8.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.4.2",
+    "source-map-explorer": "^2.5.3",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "8.18.0"
   }
 }
