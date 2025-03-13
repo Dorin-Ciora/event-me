@@ -122,7 +122,7 @@ module.exports = tseslint.config(
         'error',
         {
           type: 'attribute',
-          prefix: 'event-me',
+          prefix: 'app',
           style: 'camelCase',
         },
       ],
@@ -130,7 +130,7 @@ module.exports = tseslint.config(
         'error',
         {
           type: 'element',
-          prefix: 'event-me',
+          prefix: 'app',
           style: 'kebab-case',
         },
       ],
@@ -142,6 +142,7 @@ module.exports = tseslint.config(
           alwaysTryTypes: true,
         },
       },
+      'boundaries/ignore': [],
       'boundaries/dependency-nodes': ['import', 'dynamic-import'],
       'boundaries/elements': [
         {
@@ -218,7 +219,7 @@ module.exports = tseslint.config(
     },
   },
   {
-    files: ['event-me/*.html'],
+    files: ['**/*.html'],
     extends: [
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,
