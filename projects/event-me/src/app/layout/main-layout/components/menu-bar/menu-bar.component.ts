@@ -1,23 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Menubar } from 'primeng/menubar';
-import { BadgeModule } from 'primeng/badge';
-import { AvatarModule } from 'primeng/avatar';
-import { InputTextModule } from 'primeng/inputtext';
-import { CommonModule } from '@angular/common';
-import { Ripple } from 'primeng/ripple';
+import { TitleCasePipe } from '@angular/common';
 import { MENU_BAR_ITEMS } from './menu-bar.config';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 @Component({
   selector: 'app-menu-bar',
-  imports: [
-    Menubar,
-    BadgeModule,
-    AvatarModule,
-    InputTextModule,
-    Ripple,
-    CommonModule,
-  ],
+  imports: [RouterLink, AvatarModule, AvatarGroupModule],
   templateUrl: './menu-bar.component.html',
   styleUrl: './menu-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

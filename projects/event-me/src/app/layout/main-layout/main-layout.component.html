@@ -1,14 +1,15 @@
-<app-menu-bar></app-menu-bar>
-
-<main class="container mx-auto mt-16 p-10">
-    <router-outlet />
-</main>
-
-<footer class="mt-auto p-10 bg-white">
-    <div class="container mx-auto text-center">
-        Made with ❤️ by
-        <a class="text-blue-700 hover:font-bold" href="https://x.com/tomastrajan">Tomas Trajan</a>
-        from
-        <a class="text-blue-700 hover:font-bold" href="https://angularexperts.io" target="_blank">Angular Experts</a>
+<div class="layout-wrapper">
+    <app-menu-bar class="p-2"></app-menu-bar>
+    <div class="layout-main-container">
+        <main class="layout-main">
+            <router-outlet />
+        </main>
+        <footer class="mt-auto p-10 bg-white">
+            <div class="container mx-auto text-center">
+                Made with ❤️ by
+                <a class="text-blue-700 hover:font-bold" href="https://x.com/tomastrajan">Ciora Dorin</a>
+            </div>
+        </footer>
     </div>
-</footer>
+    <div class="layout-mask animate-fadein"></div>
+</div>

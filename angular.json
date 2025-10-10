@@ -32,9 +32,10 @@
               {
                 "glob": "**/*",
                 "input": "projects/event-me/public"
-              }
+              },
+              "projects/event-me/src/assets"
             ],
-            "styles": ["projects/event-me/src/styles.scss"],
+            "styles": ["projects/event-me/src/assets/style/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -94,7 +95,7 @@
                 "input": "projects/event-me/public"
               }
             ],
-            "styles": ["projects/event-me/src/styles.scss"],
+            "styles": ["projects/event-me/src/assets/style/styles.scss"],
             "scripts": []
           }
         },

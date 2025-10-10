@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [MainLayoutComponent],
-  template: `<app-main-layout />`,
+  imports: [RouterOutlet],
+  template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent {
   title = 'event-me';
