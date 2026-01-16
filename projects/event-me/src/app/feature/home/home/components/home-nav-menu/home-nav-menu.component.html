@@ -1,7 +1,9 @@
-<div class="py-6 px-6 mx-0 md:mx-12 lg:mx-20 lg:px-20 flex items-center justify-between relative lg:static">
+<div
+    class="py-6 px-6 mx-0 md:mx-12 lg:mx-20 lg:px-20 flex items-center justify-between relative lg:static text-lg font-medium"
+>
     <a class="flex items-center" href="#">
         <img src="asstes/img/logo.png" alt="" />
-        <span class="text-surface-900 dark:text-surface-0 font-medium text-2xl leading-normal mr-20">EventMe</span>
+        <span class="text-surface-900 dark:text-surface-0 font-bold text-2xl leading-normal mr-20">EventMe</span>
     </a>
 
     <div
@@ -12,7 +14,7 @@
                 <a
                     (click)="router.navigate(['/home'], { fragment: 'home' })"
                     pRipple
-                    class="px-0 py-4 text-surface-900 dark:text-surface-0 font-medium text-xl"
+                    class="px-0 py-4 text-surface-900 dark:text-surface-0 font-bold text-xl"
                 >
                     <span>Home</span>
                 </a>
@@ -21,7 +23,7 @@
                 <a
                     (click)="router.navigate(['/home'], { fragment: 'features' })"
                     pRipple
-                    class="px-0 py-4 text-surface-900 dark:text-surface-0 font-medium text-xl"
+                    class="px-0 py-4 text-surface-900 dark:text-surface-0 font-bold text-xl"
                 >
                     <span>Feature</span>
                 </a>
@@ -30,14 +32,22 @@
                 <a
                     (click)="router.navigate(['/home'], { fragment: 'pricing' })"
                     pRipple
-                    class="px-0 py-4 text-surface-900 dark:text-surface-0 font-medium text-xl"
+                    class="px-0 py-4 text-surface-900 dark:text-surface-0 font-bold text-xl"
                 >
                     <span>Pricing</span>
                 </a>
             </li>
         </ul>
         <div class="flex border-t lg:border-t-0 border-surface py-4 lg:py-0 mt-4 lg:mt-0 gap-2">
-            <button pButton pRipple label="Login" routerLink="/auth/login" [rounded]="true" [text]="true"></button>
+            <button
+                class="text-xl"
+                pButton
+                pRipple
+                label="Login"
+                routerLink="/auth/login"
+                [rounded]="true"
+                [text]="true"
+            ></button>
             <button pButton pRipple label="Register" routerLink="/auth/login" [rounded]="true"></button>
         </div>
     </div>
