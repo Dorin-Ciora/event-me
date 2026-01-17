@@ -6,8 +6,8 @@ import {
   withInMemoryScrolling,
   withRouterConfig,
 } from '@angular/router';
-import { provideExperimentalZonelessChangeDetection } from '@angular/core';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideZonelessChangeDetection } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
@@ -18,14 +18,12 @@ export interface CoreOptions {
 
 export function provideCore({ routes }: CoreOptions) {
   return [
-    provideExperimentalZonelessChangeDetection(),
-    provideAnimationsAsync(),
+    provideZonelessChangeDetection(),
+    provideAnimations(),
     provideHttpClient(withFetch()),
     provideRouter(
       routes,
-      withRouterConfig({
-        onSameUrlNavigation: 'reload',
-      }),
+      withRouterConfig({ onSameUrlNavigation: 'reload' }),
       withComponentInputBinding(),
       withEnabledBlockingInitialNavigation(),
       withInMemoryScrolling({
@@ -33,10 +31,6 @@ export function provideCore({ routes }: CoreOptions) {
         scrollPositionRestoration: 'enabled',
       })
     ),
-    providePrimeNG({
-      theme: {
-        preset: Aura,
-      },
-    }),
+    providePrimeNG({ theme: { preset: Aura } }),
   ];
 }
