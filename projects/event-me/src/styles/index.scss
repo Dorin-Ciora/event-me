@@ -1,2 +1,17 @@
+// Ring 1 (token) + Ring 2 (App defaults).
 @use './tokens/index';
 @use './base/globals';
+
+// Ring 3 (App laytout)
+@use './base/utilities';
+
+// Tailwind base style.
+@tailwind base;
+
+// Tailwind component style.
+@tailwind components;
+// Tailwind utilities layer like m-2, p-3, etc.
+
+@tailwind utilities;
+
+@import 'primeicons/primeicons.css';

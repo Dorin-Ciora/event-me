@@ -35,7 +35,7 @@
               },
               "projects/event-me/src/assets"
             ],
-            "styles": ["projects/event-me/src/assets/style/styles.scss"],
+            "styles": ["projects/event-me/src/styles/index.scss"],
             "scripts": []
           },
           "configurations": {
@@ -95,7 +95,7 @@
                 "input": "projects/event-me/public"
               }
             ],
-            "styles": ["projects/event-me/src/assets/style/styles.scss"],
+            "styles": ["projects/event-me/src/styles/index.scss"],
             "scripts": []
           }
         },

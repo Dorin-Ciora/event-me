@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import { GeneralLayoutComponent } from './layout/general-layout/general-layout.component';
+import { PublicLayoutComponent } from './layout/landing-layout/landing-layout.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: GeneralLayoutComponent,
+    component: PublicLayoutComponent,
     children: [
       {
         path: '',
-        loadChildren: () => import('./feature/home/home.routes'),
+        loadChildren: () => import('./feature/home/landing.routes'),
       },
     ],
   },

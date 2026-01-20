@@ -5,11 +5,11 @@ import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
 
 @Component({
-  selector: 'event-me-home-nav-menu',
+  selector: 'event-me-landing-nav-menu',
   imports: [ButtonModule, StyleClassModule, RippleModule],
-  templateUrl: './home-nav-menu.component.html',
+  templateUrl: './landing-nav-menu.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeNavMenuComponent {
+export class LandingNavMenuComponent {
   router = inject(Router);
 }

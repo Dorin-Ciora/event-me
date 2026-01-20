@@ -3,9 +3,9 @@ import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
 
 @Component({
-  selector: 'event-me-home-features',
+  selector: 'event-me-landing-features',
   imports: [StyleClassModule, RippleModule],
-  templateUrl: './home-features.component.html',
+  templateUrl: './landing-features.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeFeaturesComponent {}
+export class LandingFeaturesComponent {}

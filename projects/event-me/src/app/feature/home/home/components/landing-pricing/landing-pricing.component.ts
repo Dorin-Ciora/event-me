@@ -3,9 +3,9 @@ import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 
 @Component({
-  selector: 'event-me-home-pricing',
+  selector: 'event-me-landing-pricing',
   imports: [ButtonModule, DividerModule],
-  templateUrl: './home-pricing.component.html',
+  templateUrl: './landing-pricing.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePricingComponent {}
+export class LandingPricingComponent {}

@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'event-me-home-banner',
+  selector: 'event-me-landing-banner',
   imports: [ButtonModule],
-  templateUrl: './home-banner.component.html',
+  templateUrl: './landing-banner.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeBannerComponent {}
+export class LandingBannerComponent {}
