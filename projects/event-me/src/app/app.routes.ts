@@ -5,14 +5,8 @@ export const routes: Routes = [
   {
     path: '',
     component: PublicLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./feature/home/landing.routes'),
-      },
-    ],
+    loadChildren: () => import('./feature/home/landing.routes'),
   },
-
   {
     path: '**',
     redirectTo: '',

@@ -5,6 +5,7 @@ import { LandingFeaturesComponent } from './components/landing-features/landing-
 import { LandingPricingComponent } from './components/landing-pricing/landing-pricing.component';
 import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
+import { LandingFooterComponent } from './components/landing-footer/landing-footer.component';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { StyleClassModule } from 'primeng/styleclass';
     LandingBannerComponent,
     LandingFeaturesComponent,
     LandingPricingComponent,
+    LandingFooterComponent,
     RippleModule,
     StyleClassModule,
   ],

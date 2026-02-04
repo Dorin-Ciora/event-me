@@ -61,7 +61,7 @@
               "fileReplacements": [
                 {
                   "replace": "projects/event-me/src/environments/environment.ts",
-                  "with": "projects/event-me/src/environments/environment.development.ts"
+                  "with": "projects/event-me/src/environments/environment.dev.ts"
                 }
               ]
             }

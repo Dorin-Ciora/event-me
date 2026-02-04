@@ -1,10 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'event-me-landing-footer',
   imports: [],
-  templateUrl: './landing-footer.html',
-  styleUrl: './landing-footer.scss',
+  templateUrl: './landing-footer.component.html',
+  styleUrl: './landing-footer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LandingFooterComponent {}
+export class LandingFooterComponent {
+  router = inject(Router);
+}
