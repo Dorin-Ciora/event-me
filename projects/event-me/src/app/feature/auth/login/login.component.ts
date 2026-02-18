@@ -6,8 +6,6 @@ import {
 } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
-  FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
@@ -21,6 +19,8 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { RippleModule } from 'primeng/ripple';
 import { AuthService } from '../../../core/auth/auth.service';
 import { MessageModule } from 'primeng/message';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'event-me-login',
@@ -37,20 +37,22 @@ import { MessageModule } from 'primeng/message';
     ReactiveFormsModule,
     FloatLabelModule,
     MessageModule,
+    ToastModule,
   ],
+  providers: [MessageService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
+  private readonly messageService = inject(MessageService);
 
   form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
   isLoading = signal(false);
-  error = signal<string | null>(null);
 
   get email() {
     return this.form.controls.email;
@@ -62,15 +64,25 @@ export class LoginComponent {
 
   async submit() {
     this.isLoading.set(true);
-    this.error.set(null);
     const email = this.email.value;
     const password = this.password.value;
 
     const { error } = await this.auth.signIn(email, password);
 
     this.isLoading.set(false);
-    if (error) return this.error.set(error.message);
+    if (error) {
+      this.showError(error.message);
+      return;
+    }
 
     this.router.navigateByUrl('/events');
+  }
+
+  showError(error: string) {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: error,
+    });
   }
 }
