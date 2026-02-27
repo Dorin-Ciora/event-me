@@ -1,23 +1,33 @@
 import { Routes } from '@angular/router';
-import { PublicLayoutComponent } from './layout/landing-layout/landing-layout.component';
-import { authGuard } from './core/auth/auth.guard';
+import { PublicLayoutComponent } from './layout/public-layout/public-layout.component';
+import { authGuard } from './core/guards/auth.guard';
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: PublicLayoutComponent,
-    loadChildren: () => import('./feature/home/landing.routes'),
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./feature/home/landing.routes'),
+      },
+      {
+        path: 'auth',
+        loadChildren: () => import('./feature/auth/auth.routes'),
+      },
+    ],
   },
   {
-    path: 'auth',
-    component: PublicLayoutComponent,
-    loadChildren: () => import('./feature/auth/auth.routes'),
-  },
-  {
-    path: 'events',
+    path: 'app',
+    component: MainLayoutComponent,
     canActivate: [authGuard],
-    loadComponent: () =>
-      import('./feature/events/event.component').then((m) => m.EventComponent),
+    children: [
+      {
+        path: 'event',
+        loadChildren: () => import('./feature/event/event.routes'),
+      },
+    ],
   },
   {
     path: '**',

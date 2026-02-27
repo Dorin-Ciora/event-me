@@ -56,8 +56,11 @@
                                 <img alt="Card" class="w-full" src="/assets/img/create_event_card_logo.png" />
                             </ng-template>
                             <ng-template #title
-                                ><p class="text-center text-blue-500">Creează un eveniment nou</p>
+                                ><p class="text-center text-blue-500">Create a new event</p>
                             </ng-template>
+                            <p class="text-cente">
+                                You are about to create a new event. The event is the core item of our system
+                            </p>
                         </p-card>
                     </div>
                     <div class="flex pt-6 justify-end">
@@ -79,10 +82,23 @@
                                 <img alt="Card" class="w-full" src="/assets/img/create_event_card_logo.png" />
                             </ng-template>
                             <ng-template #title
-                                ><p class="text-center text-blue-500">Numele evenimentului</p>
+                                ><p class="text-center text-blue-500">Name of the event</p>
                             </ng-template>
-                            <div class="flex justify-center">
-                                <input pInputText autocomplete="off" fluid />
+                            <div>
+                                <form [formGroup]="form">
+                                    <input formControlName="name" pInputText autocomplete="off" fluid />
+
+                                    @if (name.dirty && name.invalid) {
+                                        <p-message severity="error" size="small" variant="simple">
+                                            @if (name.hasError('required')) {
+                                                <span>Name is required</span>
+                                            }
+                                            @if (name.hasError('maxlength')) {
+                                                <span>Maximum number of characters is 25</span>
+                                            }
+                                        </p-message>
+                                    }
+                                </form>
                             </div>
                         </p-card>
                     </div>
@@ -99,6 +115,7 @@
                             icon="pi pi-arrow-right"
                             iconPos="right"
                             severity="info"
+                            [disabled]="form.invalid"
                         />
                     </div>
                 </ng-template>
@@ -110,26 +127,44 @@
                             <ng-template #header>
                                 <img alt="Card" class="w-full" src="/assets/img/create_event_card_logo.png" />
                             </ng-template>
-                            <ng-template #title
-                                ><p class="text-center text-blue-500">Tipul de eveniment</p></ng-template
-                            >
-                            <div class="card flex justify-center">
-                                <p-select
-                                    [options]="cities"
-                                    [(ngModel)]="selected"
-                                    optionLabel="name"
-                                    placeholder="Tipul"
-                                    class="w-full md:w-56"
-                                />
+                            <ng-template #title><p class="text-center text-blue-500">Event type</p></ng-template>
+                            <div class="card">
+                                <form [formGroup]="form">
+                                    <p-select
+                                        required
+                                        formControlName="type"
+                                        [options]="cities"
+                                        optionLabel="name"
+                                        placeholder="Tipul"
+                                        class="w-full md:w-56"
+                                        fluid
+                                    />
+                                    @if (type.dirty && type.invalid) {
+                                        <p-message severity="error" size="small" variant="simple">
+                                            @if (type.hasError('required')) {
+                                                <span>Type is required</span>
+                                            }
+                                        </p-message>
+                                    }
+                                </form>
                             </div>
                         </p-card>
                     </div>
-                    <div class="flex pt-6 justify-start">
+                    <div class="flex pt-6 justify-between">
                         <p-button
                             (onClick)="activateCallback(2)"
                             label="Back"
                             severity="secondary"
                             icon="pi pi-arrow-left"
+                        />
+                        <p-button
+                            (onClick)="createEvent()"
+                            label="Create"
+                            icon="pi pi-arrow-right"
+                            iconPos="right"
+                            severity="success"
+                            [loading]="isLoading"
+                            [disabled]="form.invalid"
                         />
                     </div>
                 </ng-template>

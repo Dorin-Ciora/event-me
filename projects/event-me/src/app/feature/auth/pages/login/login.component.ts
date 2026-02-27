@@ -17,10 +17,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { RippleModule } from 'primeng/ripple';
-import { AuthService } from '../../../core/auth/auth.service';
+import { AuthService } from '../../../../core/auth/auth.service';
 import { MessageModule } from 'primeng/message';
-import { MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
+import { NotificationService } from '../../../../core/notifications/notifications.service';
 
 @Component({
   selector: 'event-me-login',
@@ -37,16 +36,14 @@ import { ToastModule } from 'primeng/toast';
     ReactiveFormsModule,
     FloatLabelModule,
     MessageModule,
-    ToastModule,
   ],
-  providers: [MessageService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
-  private readonly messageService = inject(MessageService);
+  private readonly notification = inject(NotificationService);
 
   form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -71,18 +68,10 @@ export class LoginComponent {
 
     this.isLoading.set(false);
     if (error) {
-      this.showError(error.message);
+      this.notification.error(error.message);
       return;
     }
 
-    this.router.navigateByUrl('/events');
-  }
-
-  showError(error: string) {
-    this.messageService.add({
-      severity: 'error',
-      summary: 'Error',
-      detail: error,
-    });
+    this.router.navigateByUrl('app/event/create');
   }
 }
