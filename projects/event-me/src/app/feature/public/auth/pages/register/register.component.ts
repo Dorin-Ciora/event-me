@@ -1,7 +1,7 @@
 import { Component, signal, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../../../core/auth/auth.service';
+import { AuthService } from '../../../../../core/auth/auth.service';
 @Component({
   standalone: true,
   imports: [FormsModule, RouterLink],

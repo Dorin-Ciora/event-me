@@ -6,12 +6,12 @@ import {
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-main-layout',
+  selector: 'event-me-shell-layout',
   imports: [RouterOutlet],
   standalone: true,
-  templateUrl: './main-layout.component.html',
-  styleUrl: './main-layout.component.scss',
+  templateUrl: './shell-layout.component.html',
+  styleUrl: './shell-layout.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainLayoutComponent {}
+export class ShellLayoutComponent {}

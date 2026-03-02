@@ -17,9 +17,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { RippleModule } from 'primeng/ripple';
-import { AuthService } from '../../../../core/auth/auth.service';
+import { AuthService } from '../../../../../core/auth/auth.service';
 import { MessageModule } from 'primeng/message';
-import { NotificationService } from '../../../../core/notifications/notifications.service';
+import { NotificationService } from '../../../../../core/notifications/notifications.service';
 
 @Component({
   selector: 'event-me-login',
